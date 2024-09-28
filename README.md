@@ -74,6 +74,4 @@ function PatchSearchParamsComponent() {
     </div>
   );
 }
-
-export default PatchSearchParamsComponent;
 ```
