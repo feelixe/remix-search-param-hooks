@@ -1,6 +1,7 @@
 # Remix Search Param Hooks
 `remix-search-param-hooks` is a lightweight collection of React hooks designed to simplify the management of URL search parameters in Remix and React Router applications. These hooks provide intuitive ways to read, update, and toggle search parameters, making it easier to keep your application's state synchronized with the URL for enhanced routing and shareability. Ideal for building dynamic, URL-driven interfaces with minimal boilerplate.
 
+
 ## useToggleSearchParam
 A custom React hook for toggling a boolean URL search parameter. It allows you to easily manage boolean states synced with the URL.
 
@@ -80,11 +81,11 @@ patchSearchParams((draft) => {
 A custom React hook that checks if all specified search parameters are present and match the provided conditions in Remix applications. It provides an easy way to validate multiple search parameters in the URL.
 
 ### Parameters
-- `query` (`SearchParamQueryArgs`):
-  - Can be a function that receives each key-value pair of search parameters and returns a boolean.
-  - Or an array of:
-    - `string`: Checks if the search parameter exists.
-    - [`string`, `string`]: Checks if the parameter exists and matches the provided value.
+- `query` (`SearchParamQueryArgs`): This can be one of the following types:
+  - `Record<string, string | number | boolean | null | undefined>`: Checks if the specified key-value pairs exist in the search parameters.
+  - `string`: Checks if the search parameter exists.
+  - `string[]`: Checks if any of the listed parameters exist.
+  - `(key: string, value: string) => boolean`: A function that receives each key-value pair of search parameters and returns a boolean.
 
 ### Examples
 Checking for a single param key.
@@ -110,11 +111,12 @@ const hasExactFilter = hasEverySearchParam({
 A custom React hook that checks if any of the specified search parameters are present and match the provided conditions in Remix applications. It provides an easy way to validate the presence of one or more search parameters in the URL.
 
 ### Parameters
-- `query` (`SearchParamQueryArgs`):
-  - Can be a function that receives each key-value pair of search parameters and returns a boolean.
-  - Or an array of:
-    - `string`: Checks if the search parameter exists.
-    - `[string, string]`: Checks if the parameter exists and matches the provided value.
+- `query` (`SearchParamQueryArgs`): This can be one of the following types:
+  - `Record<string, string | number | boolean | null | undefined>`: Checks if the specified key-value pairs exist in the search parameters.
+  - `string`: Checks if the search parameter exists.
+  - `string[]`: Checks if any of the listed parameters exist.
+  - `(key: string, value: string) => boolean`: A function that receives each key-value pair of search parameters and returns a boolean.
+
 
 
 ### Examples
