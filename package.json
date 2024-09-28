@@ -1,0 +1,31 @@
+{
+  "name": "remix-search-param-hooks",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "SearchParam hooks for Remix and React Router",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run"
+  },
+  "keywords": [],
+  "author": "Felix Eklöf",
+  "license": "MIT",
+  "devDependencies": {
+    "@remix-run/react": "^2.12.1",
+    "@types/node": "^22.7.4",
+    "@types/react": "^18.3.9",
+    "jsdom": "^25.0.1",
+    "react": "^18.3.1",
+    "react-router-dom": "^6.26.2",
+    "typescript": "^5.6.2"
+  },
+  "peerDependencies": {
+    "@remix-run/react": ">=1.0.3",
+    "react": ">=18.0.0"
+  },
+  "dependencies": {
+    "@testing-library/react": "^16.0.1",
+    "vitest": "^2.1.1"
+  }
+}
