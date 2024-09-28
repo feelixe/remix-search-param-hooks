@@ -15,20 +15,21 @@ A custom React hook for toggling a boolean URL search parameter. It allows you t
 import { useToggleSearchParam } from "remix-search-param-hooks";
 
 function ToggleComponent() {
-  const [isActive, toggleIsActive] = useToggleSearchParam("active", {
+  const [isOpen, toggleIsOpen] = useToggleSearchParam("open", {
     caseSensitive: false,
     defaultValue: false,
   });
 
   return (
     <div>
-      <p>The current state is: {isActive ? "Active" : "Inactive"}</p>
-      <button onClick={() => toggleIsActive()}>Toggle</button>
-      <button onClick={() => toggleIsActive(true)}>Set Active</button>
-      <button onClick={() => toggleIsActive(false)}>Set Inactive</button>
+      <button onClick={() => toggleIsOpen()}>Toggle</button>
+      <button onClick={() => toggleIsOpen(true)}>Open</button>
+      <button onClick={() => toggleIsOpen(false)}>Close</button>
+      {isOpen && <div>content</div>}
     </div>
   );
 }
+
 ```
 
 ## usePatchSearchParams
@@ -43,35 +44,98 @@ A custom React hook that provides a convenient way to update URL search paramete
     - `undefined`: Skips the key without changes.
 - `options` (optional `NavigateOptions`): Options for navigation after updating the parameters.
 
-### Example
+### Examples
+Updating a search param value.
+```tsx
+const patchSearchParams = usePatchSearchParams();
+const handler = () => {
+  patchSearchParams({ city: "gothenburg" });
+};
+```
+
+Deleting a search param.
+```tsx
+const patchSearchParams = usePatchSearchParams();
+const handler = () => {
+  patchSearchParams({ city: null });
+};
+```
+Updating and deleting.
+```tsx
+const patchSearchParams = usePatchSearchParams();
+const handler = () => {
+  patchSearchParams({ city: null, country: "sweden" });
+};
+```
+Complex update.
+```tsx
+const patchSearchParams = usePatchSearchParams();
+patchSearchParams((draft) => {
+  // Draft is a mutable copy of the current search params. No need to clone it.
+  draft.set("updatedParam", "newValue");
+});
+```
+
+## useHasEverySearchParam
+A custom React hook that checks if all specified search parameters are present and match the provided conditions in Remix applications. It provides an easy way to validate multiple search parameters in the URL.
+
+### Parameters
+- `query` (`SearchParamQueryArgs`):
+  - Can be a function that receives each key-value pair of search parameters and returns a boolean.
+  - Or an array of:
+    - `string`: Checks if the search parameter exists.
+    - [`string`, `string`]: Checks if the parameter exists and matches the provided value.
+
+### Examples
+Checking for a single param key.
+```tsx
+const hasEverySearchParam = useHasEverySearchParam();
+const hasSearchPhrase = hasEverySearchParam("search");
+```
+Checking for multiple param keys.
+```tsx
+const hasEverySearchParam = useHasEverySearchParam();
+const hasDetailedFilter = hasEverySearchParam(["address", "city"]);
+```
+Checking for key value pairs.
+```tsx
+const hasEverySearchParam = useHasEverySearchParam();
+const hasExactFilter = hasEverySearchParam({
+  today: true,
+  city: "stockholm",
+});
+```
+
+## useHasSomeSearchParam
+A custom React hook that checks if any of the specified search parameters are present and match the provided conditions in Remix applications. It provides an easy way to validate the presence of one or more search parameters in the URL.
+
+### Parameters
+- `query` (`SearchParamQueryArgs`):
+  - Can be a function that receives each key-value pair of search parameters and returns a boolean.
+  - Or an array of:
+    - `string`: Checks if the search parameter exists.
+    - `[string, string]`: Checks if the parameter exists and matches the provided value.
+
+
+### Examples
+Checking for a single parameter key.
+```tsx
+const hasSomeSearchParam = useHasSomeSearchParam();
+const hasSearchPhrase = hasSomeSearchParam("search");
+```
+
+Checking for at least one parameter key.
+```tsx
+const hasSomeSearchParam = useHasSomeSearchParam();
+const hasAnyFilter = hasSomeSearchParam(["address", "city"]);
+```
+
+Checking for at least one key-value pair.
 
 ```tsx
-import { usePatchSearchParams } from "remix-search-param-hooks";
-
-function PatchSearchParamsComponent() {
-  const patchSearchParams = usePatchSearchParams();
-
-  const handleAddParam = () => {
-    patchSearchParams({ newParam: "value" });
-  };
-
-  const handleDeleteParam = () => {
-    patchSearchParams({ newParam: null });
-  };
-
-  const handleComplexUpdate = () => {
-    patchSearchParams((draft) => {
-      // Draft is a mutable copy of the current search params. No need to clone it.
-      draft.set("updatedParam", "newValue");
-    });
-  };
-
-  return (
-    <div>
-      <button onClick={handleAddParam}>Add Parameter</button>
-      <button onClick={handleDeleteParam}>Delete Parameter</button>
-      <button onClick={handleComplexUpdate}>Update Parameter</button>
-    </div>
-  );
-}
+const hasSomeSearchParam = useHasSomeSearchParam();
+const hasPartialFilter = hasSomeSearchParam({
+  today: true,
+  city: "stockholm",
+});
 ```

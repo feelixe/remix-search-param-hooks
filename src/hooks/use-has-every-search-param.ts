@@ -3,7 +3,6 @@ import { useSearchParams } from "@remix-run/react";
 import { SearchParamQueryArgs } from "../types.js";
 import { normalizeSearchParamQuery } from "../utils/normalize-params.js";
 
-
 export function useHasEverySearchParam() {
   const [searchParams] = useSearchParams();
 
