@@ -1,6 +1,6 @@
 {
   "name": "remix-search-param-hooks",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "type": "module",
   "description": "Convenient search param hooks for Remix",
   "main": "dist/index.js",
