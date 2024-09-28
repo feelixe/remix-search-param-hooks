@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useSearchParams } from "@remix-run/react";
 import type { NavigateOptions } from "react-router-dom"
-import { SearchParamMutationArgs } from "../types";
+import { SearchParamMutationArgs } from "../types.js";
 
 export function usePatchSearchParams() {
   const [searchParams, setSearchParams] = useSearchParams();

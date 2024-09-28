@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from "vitest";
 import type { Mock } from "vitest";
-import { useHasEverySearchParam } from "./use-has-every-search-param";
+import { useHasEverySearchParam } from "./use-has-every-search-param.js";
 import { renderHook } from "@testing-library/react";
 import { useSearchParams } from "@remix-run/react";
 

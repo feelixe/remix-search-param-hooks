@@ -1,7 +1,7 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type { Mock } from "vitest";
 import { renderHook } from "@testing-library/react";
-import { usePatchSearchParams } from "./use-patch-search-params";
+import { usePatchSearchParams } from "./use-patch-search-params.js";
 import { useSearchParams } from "@remix-run/react";
 
 vi.mock("@remix-run/react");

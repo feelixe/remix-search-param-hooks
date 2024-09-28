@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { normalizeSearchParamQuery } from './normalize-params';
+import { normalizeSearchParamQuery } from './normalize-params.js';
 
 describe('normalizeSearchParamQuery', () => {
   it('should return an array with a single string when input is a string', () => {

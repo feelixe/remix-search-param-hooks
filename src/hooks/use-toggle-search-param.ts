@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from "react";
 import { useSearchParams } from "@remix-run/react";
-import { usePatchSearchParams } from "./use-patch-search-params";
+import { usePatchSearchParams } from "./use-patch-search-params.js";
 import type { NavigateOptions } from "react-router-dom";
 
 export type useToggleSearchParamOptions = {

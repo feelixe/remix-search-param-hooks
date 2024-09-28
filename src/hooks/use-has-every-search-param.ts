@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { useSearchParams } from "@remix-run/react";
-import { SearchParamQueryArgs } from "../types";
-import { normalizeSearchParamQuery } from "../utils/normalize-params";
+import { SearchParamQueryArgs } from "../types.js";
+import { normalizeSearchParamQuery } from "../utils/normalize-params.js";
 
 
 export function useHasEverySearchParam() {

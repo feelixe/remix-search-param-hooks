@@ -1,6 +1,6 @@
 import { afterEach, describe, it, type Mock, vi } from "vitest";
 import { renderHook } from "@testing-library/react";
-import { useToggleSearchParam } from "./use-toggle-search-param";
+import { useToggleSearchParam } from "./use-toggle-search-param.js";
 import { useSearchParams } from "@remix-run/react";
 
 vi.mock("@remix-run/react");

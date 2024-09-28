@@ -1,4 +1,4 @@
-import { NormalizedSearchParamQuery, SearchParamQueryArgs } from "../types";
+import { NormalizedSearchParamQuery, SearchParamQueryArgs } from "../types.js";
 
 export function normalizeSearchParamQuery(
   query: SearchParamQueryArgs
