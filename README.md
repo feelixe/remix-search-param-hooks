@@ -1,6 +1,10 @@
 # Remix Search Param Hooks
 `remix-search-param-hooks` is a lightweight collection of React hooks designed to simplify the management of URL search parameters in Remix and React Router applications. These hooks provide intuitive ways to read, update, and toggle search parameters, making it easier to keep your application's state synchronized with the URL for enhanced routing and shareability. Ideal for building dynamic, URL-driven interfaces with minimal boilerplate.
 
+## Installation
+```bash
+npm install remix-search-param-hooks
+```
 
 ## useToggleSearchParam
 A custom React hook for toggling a boolean URL search parameter. It allows you to easily manage boolean states synced with the URL.
